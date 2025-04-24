@@ -33,8 +33,8 @@ public class UserController {
         }
         User user=new User(userDto.getMobileNumber(),userDto.getEmailId(),userDto.getName(),userDto.getCreatedTime(),userDto.getUserStatus(),userDto.getContactDetails());
         System.out.println("user   = "+user.getEmailId());
-        userService.createUser(user);
-        return ResponseEntity.ok("User Created Successfully");
+        String response = userService.createUser(user);
+        return ResponseEntity.ok("User Created Successfully"+response);
     }
 
     @PostMapping("/addContact")

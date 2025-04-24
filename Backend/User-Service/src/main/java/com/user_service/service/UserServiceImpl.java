@@ -1,11 +1,14 @@
 package com.user_service.service;
 
 
+import com.user_service.client.EmaiClint;
+import com.user_service.dto.EmailDto;
 import com.user_service.entity.ContactDetails;
 import com.user_service.entity.User;
 import com.user_service.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -18,10 +21,16 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EmaiClint emaiClint;
+
     @Override
     public String createUser(User user) {
         try{
-            userRepository.save(user);
+//            ResponseEntity<String> response = emaiClint.sendOtp(new EmailDto(user.getMobileNumber(), user.getEmailId(), "Andrio"));
+//            System.out.println("response from emil service"+response);
+            System.out.println(userRepository.save(user).toString());
+
             return "User created Successfully";
         }catch (Exception e){
             return e.toString();

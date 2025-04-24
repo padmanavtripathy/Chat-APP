@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 @FeignClient(name = "email-service")
 public interface EmaiClint {
-    @PostMapping("/sendOtp")
+    @PostMapping("/email/sendOtp")
     public ResponseEntity<String> sendOtp(@RequestBody EmailDto emailDto);
     }

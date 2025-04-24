@@ -27,10 +27,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public String createUser(User user) {
         try{
-//            ResponseEntity<String> response = emaiClint.sendOtp(new EmailDto(user.getMobileNumber(), user.getEmailId(), "Andrio"));
-//            System.out.println("response from emil service"+response);
+            ResponseEntity<String> response = emaiClint.sendOtp(new EmailDto(user.getMobileNumber(), user.getEmailId(), "Andrio"));
+            System.out.println("response from emil service"+response);
             System.out.println(userRepository.save(user).toString());
-
             return "User created Successfully";
         }catch (Exception e){
             return e.toString();
